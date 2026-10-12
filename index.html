@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Indra [@indrmsp] — Backend Engineer · Sakura Terminal</title>
+  <meta name="description" content="Backend Engineer specializing in Go, PostgreSQL, Redis, Kafka, Docker, Kubernetes, and k6.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="css/style.css">
+  <noscript>
+    <style>
+      .boot-screen { display: none !important; }
+      .pixel-progress[aria-valuenow="75"] .pixel-progress__fill { --progress-width: 75% !important; }
+      .pixel-progress[aria-valuenow="70"] .pixel-progress__fill { --progress-width: 70% !important; }
+      .pixel-progress[aria-valuenow="65"] .pixel-progress__fill { --progress-width: 65% !important; }
+      .pixel-progress[aria-valuenow="60"] .pixel-progress__fill { --progress-width: 60% !important; }
+      .pixel-progress[aria-valuenow="55"] .pixel-progress__fill { --progress-width: 55% !important; }
+    </style>
+  </noscript>
+</head>
+<body id="top">
+  <!-- Accessible Skip Link -->
+  <a href="#site-header" class="skip-link">Skip to content</a>
+
+  <!-- 1. System Boot Screen -->
+  <div id="boot" class="boot-screen" role="dialog" aria-modal="true" aria-label="System boot sequence. Press Escape to skip.">
+    <div class="boot-screen__window">
+      <div class="boot-screen__bar">
+        <span class="boot-screen__bar-title">SYSTEM_BOOT.ROM — v1.0</span>
+        <button id="boot-skip-btn" class="boot-screen__skip" type="button" aria-label="Skip system boot sequence">CONTINUE [ESC] &#9656;</button>
+      </div>
+      <div class="boot-screen__content">
+        <div id="boot-lines" class="boot-screen__terminal-body">
+          <p class="boot-line">&gt; SAKURA TERMINAL v1.0 [ARCH: GO-X86_64]</p>
+          <p class="boot-line">&gt; INITIALIZING RUNTIME ... OK</p>
+          <p class="boot-line">&gt; CHECKING DEPENDENCIES (GO, GIN, PG, REDIS, KAFKA) ... OK</p>
+          <p class="boot-line">&gt; MOUNTING OPERATOR DOSSIER ... OK</p>
+          <p class="boot-line">&gt; STATUS: ALL SERVICES INITIALIZED // READY</p>
+          <p class="boot-line boot-line--highlight">&gt; OPERATOR: INDRA [@INDRMSP] &#8212; BACKEND ENGINEER</p>
+          <p class="boot-line boot-line--prompt">&gt; READY. PRESS ENTER OR ESC TO CONTINUE <span class="cursor" aria-hidden="true">&#9608;</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Header & Navigation -->
+  <header id="site-header" class="site-header">
+    <div class="site-header__container">
+      <a href="#profile" class="site-brand" aria-label="Sakura Terminal Home">
+        <!-- 16x16 Pixel Sakura Blossom SVG -->
+        <svg class="site-brand__icon" viewBox="0 0 16 16" width="16" height="16" shape-rendering="crispEdges" aria-hidden="true">
+          <rect x="7" y="2" width="2" height="1" fill="#f2a2b6"/>
+          <rect x="6" y="3" width="4" height="2" fill="#f2a2b6"/>
+          <rect x="2" y="7" width="1" height="2" fill="#f2a2b6"/>
+          <rect x="3" y="6" width="2" height="4" fill="#f2a2b6"/>
+          <rect x="13" y="7" width="1" height="2" fill="#f2a2b6"/>
+          <rect x="11" y="6" width="2" height="4" fill="#f2a2b6"/>
+          <rect x="3" y="11" width="3" height="2" fill="#f2a2b6"/>
+          <rect x="4" y="13" width="2" height="1" fill="#f2a2b6"/>
+          <rect x="10" y="11" width="3" height="2" fill="#f2a2b6"/>
+          <rect x="10" y="13" width="2" height="1" fill="#f2a2b6"/>
+          <rect x="5" y="5" width="6" height="6" fill="#f7b7c7"/>
+          <rect x="7" y="7" width="2" height="2" fill="#e5c07b"/>
+          <rect x="7" y="6" width="2" height="1" fill="#ff7b72"/>
+          <rect x="7" y="9" width="2" height="1" fill="#ff7b72"/>
+          <rect x="6" y="7" width="1" height="2" fill="#ff7b72"/>
+          <rect x="9" y="7" width="1" height="2" fill="#ff7b72"/>
+        </svg>
+        <span class="site-brand__text">
+          <span class="site-brand__title">SAKURA TERMINAL</span>
+          <span class="site-brand__subtitle" aria-hidden="true">&#12469;&#12463;&#12521;&#12479;&#12540;&#12479;&#12490;&#12523;</span>
+        </span>
+      </a>
+
+      <button id="nav-toggle" class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation menu">
+        <span class="nav-toggle__glyph" aria-hidden="true">&#9776;</span>
+        <span class="nav-toggle__label">MENU</span>
+      </button>
+
+      <nav id="primary-nav" class="nav-menu" aria-label="Primary Navigation">
+        <ul class="nav-menu__list">
+          <li class="nav-menu__item"><a href="#profile" class="nav-menu__link">PROFILE</a></li>
+          <li class="nav-menu__item"><a href="#skills" class="nav-menu__link">SKILLS</a></li>
+          <li class="nav-menu__item"><a href="#projects" class="nav-menu__link">MISSIONS</a></li>
+          <li class="nav-menu__item"><a href="#journey" class="nav-menu__link">JOURNEY</a></li>
+          <li class="nav-menu__item"><a href="#terminal" class="nav-menu__link">TERMINAL</a></li>
+          <li class="nav-menu__item"><a href="#contact" class="nav-menu__link">CONTACT</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-header__status" aria-label="System status online">
+        <span class="status-indicator" aria-hidden="true">&#9679;</span>
+        <span class="status-text">ONLINE</span>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- 3. Player Profile Section -->
+    <section id="profile" class="section section--profile" aria-labelledby="profile-title">
+      <div class="section__header">
+        <div class="section__meta">
+          <span class="section__code">[01 // IDENTITY]</span>
+          <span class="section__watermark" aria-hidden="true">&#12503;&#12525;&#12501;&#12451;&#12540;&#12523;</span>
+        </div>
+        <h1 id="profile-title" class="section__title">PLAYER PROFILE</h1>
+        <div class="ascii-divider" aria-hidden="true">&#9552;&#9552;&#9552; &#9670; &#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;</div>
+      </div>
+
+      <div class="profile-grid">
+        <!-- Left: Character Sheet Card -->
+        <div class="panel character-sheet">
+          <div class="panel__header">
+            <span class="panel__title">DOSSIER // CHAR_SHEET</span>
+            <span class="panel__decor" aria-hidden="true">&#9642;&#9642;&#9642;</span>
+          </div>
+          <div class="character-sheet__body">
+            <div class="character-sheet__avatar-row">
+              <div class="pixel-avatar" role="img" aria-label="Profile avatar of Indra">
+                <img src="assets/punpun.png" alt="Profile avatar of Indra" width="48" height="48" class="pixel-avatar__img">
+              </div>
+              <div class="character-sheet__tag">
+                <span class="tag-badge">SYS_ID: INDRA</span>
+                <span class="tag-runtime">GO 1.22+ // LINUX</span>
+              </div>
+            </div>
+
+            <dl class="character-sheet__stats">
+              <div class="stat-row">
+                <dt class="stat-label">NAME</dt>
+                <dd class="stat-value">Indra [@indrmsp]</dd>
+              </div>
+              <div class="stat-row">
+                <dt class="stat-label">CLASS</dt>
+                <dd class="stat-value stat-value--highlight">Backend Engineer</dd>
+              </div>
+              <div class="stat-row">
+                <dt class="stat-label">SUBCLASS</dt>
+                <dd class="stat-value">Cloud / DevOps</dd>
+              </div>
+              <div class="stat-row">
+                <dt class="stat-label">LEVEL</dt>
+                <dd class="stat-value" title="Fresh Graduate / Entry-Level Backend Engineer (0 YOE)">LVL 1 [0 YOE]</dd>
+              </div>
+              <div class="stat-row">
+                <dt class="stat-label">STATUS</dt>
+                <dd class="stat-value stat-value--online">Available for Quests</dd>
+              </div>
+              <div class="stat-row">
+                <dt class="stat-label">REGION</dt>
+                <dd class="stat-value">Remote / Global (UTC+7)</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+
+        <!-- Right: Professional Summary Prose -->
+        <div class="panel profile-bio">
+          <div class="panel__header">
+            <span class="panel__title">MISSION STATEMENT // BIO</span>
+            <span class="panel__decor" aria-hidden="true">&#9642;&#9642;&#9642;</span>
+          </div>
+          <div class="profile-bio__body">
+            <p class="profile-lead">
+              Entry-level Backend Engineer focusing on building reliable backend foundations with <strong>Golang</strong>, designing relational databases in <strong>PostgreSQL</strong>, and exploring asynchronous event-driven architectures with <strong>Apache Kafka</strong>.
+            </p>
+            <p>
+              I enjoy understanding how systems operate under the hood: structuring clean HTTP services in <strong>Gin</strong>, speeding up queries with <strong>Redis</strong> caching, containerizing workloads with <strong>Docker</strong>, and benchmarking endpoints with <strong>k6</strong> to identify bottlenecks early.
+            </p>
+            <p>
+              My goal is to grow into a dependable systems engineer by writing readable code, adhering to clean architecture principles, and building maintainable backend services ready for cloud environments.
+            </p>
+            <div class="profile-bio__badges">
+              <span class="spec-badge">GOLANG / GIN</span>
+              <span class="spec-badge">POSTGRESQL</span>
+              <span class="spec-badge">REDIS</span>
+              <span class="spec-badge">APACHE KAFKA</span>
+              <span class="spec-badge">DOCKER</span>
+              <span class="spec-badge">K8S BASICS</span>
+              <span class="spec-badge">K6 LOAD TESTING</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Attributes Progress Bars Block -->
+      <div class="panel attributes-panel">
+        <div class="panel__header">
+          <span class="panel__title">CORE ATTRIBUTES // SPECIALIZATIONS</span>
+          <span class="panel__meta">BASE_CAPACITY: ENTRY-LEVEL</span>
+        </div>
+        <div class="attributes-panel__body">
+          <div class="attribute-item">
+            <div class="attribute-item__meta">
+              <span class="attribute-item__label">Golang &amp; Backend Foundations</span>
+              <span class="attribute-item__val">75%</span>
+            </div>
+            <div class="pixel-progress" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" aria-label="Golang and Backend Foundations competence">
+              <div class="pixel-progress__fill"></div>
+            </div>
+          </div>
+
+          <div class="attribute-item">
+            <div class="attribute-item__meta">
+              <span class="attribute-item__label">Database Design (PostgreSQL)</span>
+              <span class="attribute-item__val">70%</span>
+            </div>
+            <div class="pixel-progress" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" aria-label="Database Design PostgreSQL competence">
+              <div class="pixel-progress__fill"></div>
+            </div>
+          </div>
+
+          <div class="attribute-item">
+            <div class="attribute-item__meta">
+              <span class="attribute-item__label">Docker &amp; Containerization</span>
+              <span class="attribute-item__val">65%</span>
+            </div>
+            <div class="pixel-progress" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" aria-label="Docker and Containerization competence">
+              <div class="pixel-progress__fill"></div>
+            </div>
+          </div>
+
+          <div class="attribute-item">
+            <div class="attribute-item__meta">
+              <span class="attribute-item__label">Message Queues &amp; Caching (Kafka / Redis)</span>
+              <span class="attribute-item__val">60%</span>
+            </div>
+            <div class="pixel-progress" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" aria-label="Message Queues and Caching competence">
+              <div class="pixel-progress__fill"></div>
+            </div>
+          </div>
+
+          <div class="attribute-item">
+            <div class="attribute-item__meta">
+              <span class="attribute-item__label">Cloud Infrastructure &amp; DevOps</span>
+              <span class="attribute-item__val">55%</span>
+            </div>
+            <div class="pixel-progress" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100" aria-label="Cloud Infrastructure and DevOps competence">
+              <div class="pixel-progress__fill"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Skills Section -->
+    <section id="skills" class="section section--skills" aria-labelledby="skills-title">
+      <div class="section__header">
+        <div class="section__meta">
+          <span class="section__code">[02 // ABILITIES]</span>
+          <span class="section__watermark" aria-hidden="true">&#12473;&#12461;&#12523;</span>
+        </div>
+        <h2 id="skills-title" class="section__title">SKILL TREE &amp; ABILITIES</h2>
+        <div class="ascii-divider" aria-hidden="true">&#9552;&#9552;&#9552; &#9670; &#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;</div>
+      </div>
+
+      <div class="skills-grid">
+        <!-- Ability 1: Go / Gin -->
+        <article class="panel skill-card">
+          <div class="skill-card__header">
+            <span class="skill-card__tag">ABILITY // 01</span>
+            <div class="skill-card__rating">
+              <span class="skill-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+              <span class="skill-card__score" aria-label="Rating 4 out of 5">4/5</span>
+            </div>
+          </div>
+          <h3 class="skill-card__title">Golang &amp; Gin Framework</h3>
+          <p class="skill-card__desc">
+            Builds RESTful APIs with clean architecture, request routing, structured middleware, and error handling.
+          </p>
+          <div class="skill-card__stack">
+            <span class="tech-chip">GO 1.22</span>
+            <span class="tech-chip">GIN</span>
+            <span class="tech-chip">REST API</span>
+            <span class="tech-chip">JSON</span>
+          </div>
+        </article>
+
+        <!-- Ability 2: PostgreSQL -->
+        <article class="panel skill-card">
+          <div class="skill-card__header">
+            <span class="skill-card__tag">ABILITY // 02</span>
+            <div class="skill-card__rating">
+              <span class="skill-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9734;&#9734;</span>
+              <span class="skill-card__score" aria-label="Rating 3 out of 5">3/5</span>
+            </div>
+          </div>
+          <h3 class="skill-card__title">PostgreSQL &amp; Database Design</h3>
+          <p class="skill-card__desc">
+            Designs normalized relational schemas, writes SQL queries, implements foreign keys, constraints, and manages migrations.
+          </p>
+          <div class="skill-card__stack">
+            <span class="tech-chip">POSTGRESQL</span>
+            <span class="tech-chip">SQL</span>
+            <span class="tech-chip">PGX</span>
+            <span class="tech-chip">GORM</span>
+          </div>
+        </article>
+
+        <!-- Ability 3: Kafka -->
+        <article class="panel skill-card">
+          <div class="skill-card__header">
+            <span class="skill-card__tag">ABILITY // 03</span>
+            <div class="skill-card__rating">
+              <span class="skill-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9734;&#9734;</span>
+              <span class="skill-card__score" aria-label="Rating 3 out of 5">3/5</span>
+            </div>
+          </div>
+          <h3 class="skill-card__title">Apache Kafka Event Streaming</h3>
+          <p class="skill-card__desc">
+            Implements decoupled event producers and consumers for asynchronous message passing and queue handling.
+          </p>
+          <div class="skill-card__stack">
+            <span class="tech-chip">KAFKA</span>
+            <span class="tech-chip">PRODUCER</span>
+            <span class="tech-chip">CONSUMER</span>
+            <span class="tech-chip">PUBSUB</span>
+          </div>
+        </article>
+
+        <!-- Ability 4: Redis -->
+        <article class="panel skill-card">
+          <div class="skill-card__header">
+            <span class="skill-card__tag">ABILITY // 04</span>
+            <div class="skill-card__rating">
+              <span class="skill-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9734;&#9734;</span>
+              <span class="skill-card__score" aria-label="Rating 3 out of 5">3/5</span>
+            </div>
+          </div>
+          <h3 class="skill-card__title">Redis In-Memory Caching</h3>
+          <p class="skill-card__desc">
+            Implements key-value caching patterns, TTL expirations, and basic session management to reduce query overhead.
+          </p>
+          <div class="skill-card__stack">
+            <span class="tech-chip">REDIS</span>
+            <span class="tech-chip">CACHE-ASIDE</span>
+            <span class="tech-chip">KV-STORE</span>
+          </div>
+        </article>
+
+        <!-- Ability 5: Docker & Containers -->
+        <article class="panel skill-card">
+          <div class="skill-card__header">
+            <span class="skill-card__tag">ABILITY // 05</span>
+            <div class="skill-card__rating">
+              <span class="skill-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+              <span class="skill-card__score" aria-label="Rating 4 out of 5">4/5</span>
+            </div>
+          </div>
+          <h3 class="skill-card__title">Docker &amp; Containerization</h3>
+          <p class="skill-card__desc">
+            Packages Go applications into lightweight container images using multi-stage Dockerfiles and Docker Compose.
+          </p>
+          <div class="skill-card__stack">
+            <span class="tech-chip">DOCKER</span>
+            <span class="tech-chip">MULTI-STAGE</span>
+            <span class="tech-chip">COMPOSE</span>
+          </div>
+        </article>
+
+        <!-- Ability 6: Kubernetes -->
+        <article class="panel skill-card">
+          <div class="skill-card__header">
+            <span class="skill-card__tag">ABILITY // 06</span>
+            <div class="skill-card__rating">
+              <span class="skill-card__stars" aria-hidden="true">&#9733;&#9733;&#9734;&#9734;&#9734;</span>
+              <span class="skill-card__score" aria-label="Rating 2 out of 5">2/5</span>
+            </div>
+          </div>
+          <h3 class="skill-card__title">Kubernetes Basics</h3>
+          <p class="skill-card__desc">
+            Learning cluster fundamentals: deploying Pods, Services, ConfigMaps, and understanding rolling updates.
+          </p>
+          <div class="skill-card__stack">
+            <span class="tech-chip">K8S</span>
+            <span class="tech-chip">PODS</span>
+            <span class="tech-chip">SERVICES</span>
+            <span class="tech-chip">YAML</span>
+          </div>
+        </article>
+
+        <!-- Ability 7: k6 Performance Testing -->
+        <article class="panel skill-card">
+          <div class="skill-card__header">
+            <span class="skill-card__tag">ABILITY // 07</span>
+            <div class="skill-card__rating">
+              <span class="skill-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9734;&#9734;</span>
+              <span class="skill-card__score" aria-label="Rating 3 out of 5">3/5</span>
+            </div>
+          </div>
+          <h3 class="skill-card__title">k6 Performance Testing</h3>
+          <p class="skill-card__desc">
+            Writes synthetic load test scripts in JavaScript to benchmark HTTP endpoints and measure response times.
+          </p>
+          <div class="skill-card__stack">
+            <span class="tech-chip">K6</span>
+            <span class="tech-chip">LOAD TESTING</span>
+            <span class="tech-chip">BENCHMARKS</span>
+          </div>
+        </article>
+
+        <!-- Ability 8: Linux & DevOps Tooling -->
+        <article class="panel skill-card">
+          <div class="skill-card__header">
+            <span class="skill-card__tag">ABILITY // 08</span>
+            <div class="skill-card__rating">
+              <span class="skill-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9734;&#9734;</span>
+              <span class="skill-card__score" aria-label="Rating 3 out of 5">3/5</span>
+            </div>
+          </div>
+          <h3 class="skill-card__title">Linux &amp; DevOps Tooling</h3>
+          <p class="skill-card__desc">
+            Proficient in Linux shell environments, Git version control, GitHub Actions CI workflows, and automation.
+          </p>
+          <div class="skill-card__stack">
+            <span class="tech-chip">LINUX</span>
+            <span class="tech-chip">BASH</span>
+            <span class="tech-chip">GIT</span>
+            <span class="tech-chip">CI/CD</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 5. Project Gallery (GitHub Repositories) -->
+    <section id="projects" class="section section--projects" aria-labelledby="projects-title">
+      <div class="section__header">
+        <div class="section__meta">
+          <span class="section__code">[03 // REPOSITORIES]</span>
+          <span class="section__watermark" aria-hidden="true">&#12511;&#12483;&#12471;&#12519;&#12531;</span>
+        </div>
+        <h2 id="projects-title" class="section__title">PROJECT GALLERY // GITHUB REPOSITORIES</h2>
+        <div class="ascii-divider" aria-hidden="true">&#9552;&#9552;&#9552; &#9670; &#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;</div>
+      </div>
+
+      <div class="projects-meta-bar">
+        <div class="projects-meta-bar__info">
+          <span class="source-badge">SOURCE: GITHUB API [@indrmsp]</span>
+          <span id="repo-count-badge" class="repo-badge">SYNCING LIVE REPOSITORIES...</span>
+        </div>
+        <button id="refresh-repos-btn" class="btn-refresh" type="button" aria-label="Refresh GitHub repositories">
+          REFRESH &#8635;
+        </button>
+      </div>
+
+      <div id="github-projects-grid" class="missions-grid">
+        <!-- Fallback static repository card (augmented dynamically by script.js with live GitHub API metrics) -->
+        <article class="panel mission-card mission-card--featured">
+          <div class="panel__header">
+            <span class="panel__title">MISSION &#183; website-portofolio</span>
+            <div class="mission-card__status">
+              <span class="status-cleared">&#10003; PUBLIC REPOSITORY</span>
+              <span class="difficulty">&#9733; FEATURED</span>
+            </div>
+          </div>
+          <div class="mission-card__body">
+            <div class="mission-field">
+              <span class="mission-label">ROLE</span>
+              <p class="mission-prose">Fullstack Developer</p>
+            </div>
+            <div class="mission-field">
+              <span class="mission-label">DESCRIPTION</span>
+              <p class="mission-prose">
+                Personal developer portfolio featuring a retro Japanese terminal interface built with zero-dependency vanilla web standards and dynamic GitHub repository synchronization.
+              </p>
+            </div>
+            <div class="mission-field">
+              <span class="mission-label">STACK</span>
+              <div class="mission-stack">
+                <span class="tech-chip">HTML5</span>
+                <span class="tech-chip">CSS3 (TOKENS)</span>
+                <span class="tech-chip">VANILLA JAVASCRIPT</span>
+                <span class="tech-chip">GITHUB REST API</span>
+                <span class="tech-chip">RETRO TERMINAL</span>
+              </div>
+            </div>
+            <div class="mission-field">
+              <span class="mission-label">CHALLENGES</span>
+              <p class="mission-prose">
+                Implementing an authentic retro monospace aesthetic with strict zero border-radius, keyboard-driven navigation, embedded terminal emulation, and resilient static fallback behavior when GitHub API requests fail or reach unauthenticated rate limits.
+              </p>
+            </div>
+            <div class="mission-field">
+              <span class="mission-label">RESULTS</span>
+              <p class="mission-prose">
+                Pure vanilla implementation with zero external runtime dependencies, full keyboard navigation with reduced-motion support, and graceful fallback to static repository markup when network or API limits occur.
+              </p>
+            </div>
+            <div class="mission-card__footer">
+              <a href="https://github.com/indrmsp/website-portofolio" target="_blank" rel="noopener noreferrer" class="retro-link">VIEW REPOSITORY &#8599;</a>
+              <time datetime="2026-10-11" class="mission-code">UPDATED: 2026-10-11</time>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 6. Experience (Developer Journey) -->
+    <section id="journey" class="section section--journey" aria-labelledby="journey-title">
+      <div class="section__header">
+        <div class="section__meta">
+          <span class="section__code">[04 // MILESTONES]</span>
+          <span class="section__watermark" aria-hidden="true">&#26053;</span>
+        </div>
+        <h2 id="journey-title" class="section__title">DEVELOPER JOURNEY // MILESTONES</h2>
+        <div class="ascii-divider" aria-hidden="true">&#9552;&#9552;&#9552; &#9670; &#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;</div>
+      </div>
+
+      <div class="timeline-wrapper">
+        <ol class="timeline" aria-label="Career Journey History">
+          <!-- Timeline Entry 1: Informatics - Telkom University Purwokerto -->
+          <li class="timeline-item">
+            <div class="timeline-marker" aria-hidden="true"></div>
+            <div class="panel timeline-content">
+              <div class="timeline-header">
+                <span class="timeline-date">
+                  <time datetime="2022">2022</time> &#8212; <time datetime="2026">2026</time>
+                </span>
+                <span class="timeline-role">1. INFORMATICS &#183; TELKOM UNIVERSITY PURWOKERTO</span>
+              </div>
+              <ul class="timeline-bullets">
+                <li>Studied core foundations: Data Structures &amp; Algorithms, Relational Databases, Computer Networks, and Operating Systems.</li>
+                <li>Developed web services, REST APIs, and database-driven applications in collaborative academic projects.</li>
+                <li>Focused on backend engineering fundamentals, Linux environments, and clean software architecture.</li>
+              </ul>
+            </div>
+          </li>
+
+          <!-- Timeline Entry 2: Junior Backend Engineer -->
+          <li class="timeline-item timeline-item--current">
+            <div class="timeline-marker" aria-hidden="true"></div>
+            <div class="panel timeline-content">
+              <div class="timeline-header">
+                <span class="timeline-date">
+                  <time datetime="2026">2026</time> &#8212; <span class="tag-current">PRESENT</span>
+                </span>
+                <span class="timeline-role">2. JUNIOR BACKEND ENGINEER</span>
+              </div>
+              <ul class="timeline-bullets">
+                <li>Developing backend services and RESTful APIs with clean architecture using Golang and Gin.</li>
+                <li>Designing relational schemas, queries, and constraints with PostgreSQL.</li>
+                <li>Containerizing development workflows with Docker and benchmarking endpoints using k6.</li>
+                <li>Exploring event-driven patterns with Apache Kafka, Redis caching, and cloud platform tooling.</li>
+              </ul>
+            </div>
+          </li>
+
+          <!-- Timeline Entry 3: To be Continued -->
+          <li class="timeline-item timeline-item--locked">
+            <div class="timeline-marker" aria-hidden="true"></div>
+            <div class="panel timeline-content">
+              <div class="timeline-header">
+                <span class="timeline-date">
+                  <span class="tag-locked">[FUTURE]</span>
+                </span>
+                <span class="timeline-role timeline-role--locked">3. TO BE CONTINUED...</span>
+              </div>
+              <ul class="timeline-bullets">
+                <li>Next engineering quest and career milestone in progress.</li>
+                <li>Future cloud systems and backend distributed architectures to be unlocked.</li>
+              </ul>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 7. Interactive Terminal Section -->
+    <section id="terminal" class="section section--terminal" aria-labelledby="terminal-title">
+      <div class="section__header">
+        <div class="section__meta">
+          <span class="section__code">[05 // CONSOLE]</span>
+          <span class="section__watermark" aria-hidden="true">&#31471;&#26411;</span>
+        </div>
+        <h2 id="terminal-title" class="section__title">INTERACTIVE TERMINAL</h2>
+        <div class="ascii-divider" aria-hidden="true">&#9552;&#9552;&#9552; &#9670; &#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;</div>
+      </div>
+
+      <div class="terminal-container">
+        <div class="terminal">
+          <div class="terminal__titlebar">
+            <div class="terminal__dots" aria-hidden="true">
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+            <span class="terminal__title">SAKURA SHELL &#8212; tty0 [BASH-EMU]</span>
+            <span class="terminal__help-hint">TYPE 'help' FOR CMDS</span>
+          </div>
+          <div id="terminal-output" class="terminal__output" role="log" aria-live="polite" aria-label="Terminal output log">
+            <p class="term-line term-line--sys">SAKURA SHELL v1.0 [CONNECTED: 127.0.0.1:8080]</p>
+            <p class="term-line term-line--sys">SYSTEM: Golang 1.22 / Gin / Postgres / Redis / Kafka / Docker / K8s / k6</p>
+            <p class="term-line term-line--hint">Type '<span class="term-highlight">help</span>' to list available system commands. Use <kbd>&#8593;</kbd>/<kbd>&#8595;</kbd> for history, <kbd>Tab</kbd> to complete.</p>
+          </div>
+          <form id="terminal-form" class="terminal__input-line" autocomplete="off">
+            <label for="terminal-input" class="terminal__prompt">visitor@sakura:~$</label>
+            <input id="terminal-input" type="text" autocomplete="off" spellcheck="false" aria-label="Terminal command input" placeholder="help">
+            <button type="submit" class="terminal__submit" aria-label="Execute command">ENTER</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. Contact Section -->
+    <section id="contact" class="section section--contact" aria-labelledby="contact-title">
+      <div class="section__header">
+        <div class="section__meta">
+          <span class="section__code">[06 // COMMS]</span>
+          <span class="section__watermark" aria-hidden="true">&#36899;&#32097;</span>
+        </div>
+        <h2 id="contact-title" class="section__title">START A NEW QUEST</h2>
+        <div class="ascii-divider" aria-hidden="true">&#9552;&#9552;&#9552; &#9670; &#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;</div>
+      </div>
+
+      <div class="contact-card panel">
+        <div class="panel__header">
+          <span class="panel__title">COMMUNICATION CHANNELS // DIRECT UPLINK</span>
+          <span class="panel__decor" aria-hidden="true">&#9642;&#9642;&#9642;</span>
+        </div>
+        <div class="contact-card__body">
+          <p class="contact-card__intro">
+            Open to backend, cloud architecture, and high-concurrency systems engineering challenges.
+          </p>
+
+          <div class="contact-channels">
+            <!-- GitHub -->
+            <a href="https://github.com/indrmsp" target="_blank" rel="noopener noreferrer" class="channel-row">
+              <div class="channel-row__info">
+                <svg class="channel-icon" viewBox="0 0 16 16" width="16" height="16" shape-rendering="crispEdges" aria-hidden="true">
+                  <rect x="5" y="2" width="6" height="2" fill="#d8dee9"/>
+                  <rect x="3" y="4" width="10" height="7" fill="#d8dee9"/>
+                  <rect x="2" y="6" width="1" height="5" fill="#d8dee9"/>
+                  <rect x="13" y="6" width="1" height="5" fill="#d8dee9"/>
+                  <rect x="5" y="6" width="2" height="2" fill="#0b0e14"/>
+                  <rect x="9" y="6" width="2" height="2" fill="#0b0e14"/>
+                  <rect x="5" y="11" width="2" height="3" fill="#d8dee9"/>
+                  <rect x="9" y="11" width="2" height="3" fill="#d8dee9"/>
+                </svg>
+                <div class="channel-row__text">
+                  <span class="channel-name">GITHUB</span>
+                  <span class="channel-detail">github.com/indrmsp</span>
+                </div>
+              </div>
+              <span class="channel-action">CONNECT &#8599;</span>
+            </a>
+
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/in/indrmsp" target="_blank" rel="noopener noreferrer" class="channel-row">
+              <div class="channel-row__info">
+                <svg class="channel-icon" viewBox="0 0 16 16" width="16" height="16" shape-rendering="crispEdges" aria-hidden="true">
+                  <rect x="2" y="2" width="12" height="12" fill="#161b26"/>
+                  <rect x="2" y="2" width="12" height="1" fill="#79c0ff"/>
+                  <rect x="4" y="4" width="2" height="2" fill="#79c0ff"/>
+                  <rect x="4" y="7" width="2" height="6" fill="#79c0ff"/>
+                  <rect x="8" y="7" width="2" height="6" fill="#79c0ff"/>
+                  <rect x="8" y="7" width="4" height="2" fill="#79c0ff"/>
+                  <rect x="11" y="9" width="2" height="4" fill="#79c0ff"/>
+                </svg>
+                <div class="channel-row__text">
+                  <span class="channel-name">LINKEDIN</span>
+                  <span class="channel-detail">linkedin.com/in/indrmsp</span>
+                </div>
+              </div>
+              <span class="channel-action">CONNECT &#8599;</span>
+            </a>
+
+            <!-- Email -->
+            <div class="channel-row channel-row--email">
+              <a href="mailto:indrmsp@gmail.com" class="channel-row__info channel-email-link">
+                <svg class="channel-icon" viewBox="0 0 16 16" width="16" height="16" shape-rendering="crispEdges" aria-hidden="true">
+                  <rect x="2" y="4" width="12" height="8" fill="#161b26"/>
+                  <rect x="2" y="4" width="12" height="1" fill="#f2a2b6"/>
+                  <rect x="2" y="11" width="12" height="1" fill="#f2a2b6"/>
+                  <rect x="2" y="4" width="1" height="8" fill="#f2a2b6"/>
+                  <rect x="13" y="4" width="1" height="8" fill="#f2a2b6"/>
+                  <rect x="4" y="6" width="2" height="1" fill="#f2a2b6"/>
+                  <rect x="10" y="6" width="2" height="1" fill="#f2a2b6"/>
+                  <rect x="6" y="7" width="4" height="1" fill="#f2a2b6"/>
+                </svg>
+                <div class="channel-row__text">
+                  <span class="channel-name">EMAIL</span>
+                  <span id="email-address-text" class="channel-detail">indrmsp@gmail.com</span>
+                </div>
+              </a>
+              <button id="copy-email-btn" type="button" class="btn-copy" aria-label="Copy email address to clipboard">
+                COPY EMAIL
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 9. Footer -->
+  <footer id="site-footer" class="site-footer">
+    <div class="site-footer__container">
+      <div class="site-footer__copy">
+        &copy; 2026 Indra [@indrmsp] &#183; Built with HTML, CSS &amp; JavaScript &#183; 8-bit soul, production mindset
+      </div>
+      <a href="#top" id="back-to-top-btn" class="site-footer__top" aria-label="Back to top of page">TOP &#9650;</a>
+    </div>
+  </footer>
+
+  <!-- Single Vanilla JavaScript file -->
+  <script src="js/script.js"></script>
+</body>
+</html>
